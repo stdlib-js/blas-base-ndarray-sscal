@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,19 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-var strided = require( '@stdlib/blas-base-sscal' ).ndarray;
-
-
-// MAIN //
+import { float32ndarray } from '@stdlib/types/ndarray';
 
 /**
 * Multiplies a one-dimensional single-precision floating-point ndarray by a scalar constant.
@@ -40,8 +32,8 @@ var strided = require( '@stdlib/blas-base-sscal' ).ndarray;
 *     -   a one-dimensional input ndarray.
 *     -   a zero-dimensional ndarray containing a scalar constant.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {Object} input ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns input ndarray
 *
 * @example
 * var Float32Vector = require( '@stdlib/ndarray-vector-float32' );
@@ -59,14 +51,9 @@ var strided = require( '@stdlib/blas-base-sscal' ).ndarray;
 * var bool = ( y === x );
 * // returns true
 */
-function sscal( arrays ) {
-	var alpha = ndarraylike2scalar( arrays[ 1 ] );
-	var x = arrays[ 0 ];
-	strided( numelDimension( x, 0 ), alpha, getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
-	return x;
-}
+declare function sscal( arrays: [ float32ndarray, float32ndarray ] ): float32ndarray;
 
 
 // EXPORTS //
 
-module.exports = sscal;
+export = sscal;
